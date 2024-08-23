@@ -1,0 +1,23 @@
+/* Header.css */
+.Header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 80px; /* ヘッダーの高さを設定 */
+    background-color: #333;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 1000; /* 他のコンテンツより前面に表示されるようにする */
+}
+
+.Header button {
+    background-color: #229147;
+    border: 3px solid rgb(244, 238, 238);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+

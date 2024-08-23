@@ -1,0 +1,26 @@
+.MovieContaier{
+    display: inline-flex;
+    margin-top: 10px;
+  }
+  .Movieicon {
+      background-color: #414141;
+      transform: translateX(10px) translateY(10px);
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+    }
+    .MovieList{
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+      margin-left: 15px;
+  
+    }
+  .Discription{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     height: 100px;
+     width: 300px;
+     background-color: aqua; 
+  }

@@ -1,0 +1,34 @@
+/* Header.css */
+.Footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 80px; /* ヘッダーの高さを設定 */
+    background-color: #333;
+    color: white;
+    z-index: 1000; /* 他のコンテンツより前面に表示されるようにする */
+    display: flex;
+    justify-content: center; /* 中央揃え */
+    align-items: center; /* 垂直中央揃え */
+}
+.ButtonContainer{
+    display: flex;
+    justify-content: space-between; /* ボタンの間にスペースを設定 */
+    align-items: center; /* ボタンを垂直方向に中央揃え */   
+
+}
+
+.ButtonContainer button {
+    background-color: #444;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 15px; /* ボタン間にマージンを追加 */
+}
+
+button:hover {
+    background-color: #555;
+}

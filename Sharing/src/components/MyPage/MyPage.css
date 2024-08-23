@@ -1,0 +1,11 @@
+.submitMovieContainer{
+    padding-top: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.SubmitMovie{
+    width: 20vw;
+    height: 10vh;
+    border-radius: 50%;
+}

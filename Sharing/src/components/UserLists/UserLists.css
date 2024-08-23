@@ -1,0 +1,70 @@
+/* From Uiverse.io by 1osm */ 
+.UserContaier{
+  display: inline-flex;
+  margin-top: 10px;
+}
+.Usericon {
+    background-color: #d5b8b8;
+    transform: translateX(10px) translateY(10px);
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+  }
+  .ContentList{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-left: 15px;
+
+  }
+.top{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+   height: 50px;
+   width: 300px;
+   background-color: aqua; 
+}
+.bottom{
+   height: 50px;
+   width: 300px;
+   background-color: rgb(11, 93, 93); 
+}
+
+
+
+.UserName {
+  background-color: #414141;
+  width: 60px;
+  height: 15px;
+  border-width: 10px;
+  border-radius: 5px;
+  border-color: #262626;
+  color: #262626;
+  font-size: 15px;
+  font-weight: bold;
+  transform: translateX(70px) translateY(-35px);
+}
+
+
+
+/*______Social Media______*/
+
+.social-media{
+  display: flex;
+  justify-content: space-around;
+}
+
+.social-media :link {
+  margin-right: 40px;
+  text-decoration: none;
+  color: inherit;
+}
+
+
+.social-media :link img {
+  transform: translatex(30px) translateY(5px);
+  width: 40px;  /* SVGの幅を40pxに拡大 */
+  height: 40px; /* SVGの高さを40pxに拡大 */
+}
+
