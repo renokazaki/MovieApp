@@ -1,30 +1,29 @@
-import "./MovieLists.css";
-import { db } from "../../lib/firebase";
+import "./MyMovieLists.css";
 import { useEffect, useState } from "react";
+import { db, auth } from "../../../lib/firebase";
 import { collection, query, where, getDocs } from "firebase/firestore";
-import { useLocation } from "react-router-dom"; // useLocationをインポート
-import { Loading } from "../Loading/Loading";
+import { Loading } from "../../Loading/Loading";
 
-const MovieLists = () => {
+const MyMovieLists = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // URLからクエリパラメータを取得
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const category = queryParams.get("category");
-  const userDisplayName = queryParams.get("user");
+  //user情報を取得
+  const user = auth.currentUser;
+  const userName = user ? user.displayName : null; // ユーザーがログインしていない場合は null
+
+  console.log("User Display Name:", userName);
 
   useEffect(() => {
-    const fetchMovies = async (category, userDisplayName) => {
+    const fetchMovies = async () => {
       setLoading(true); // データ取得中の状態にする
       try {
         const q = query(
           collection(db, "Movie"),
-          where("Category", "==", category),
-          where("UserId", "==", userDisplayName)
+          where("UserId", "==", userName)
         );
+
         const querySnapshot = await getDocs(q);
         const moviesList = querySnapshot.docs.map((doc) => ({
           id: doc.id,
@@ -38,12 +37,12 @@ const MovieLists = () => {
       }
     };
 
-    fetchMovies(category, userDisplayName);
-  }, [category, userDisplayName]);
+    fetchMovies();
+  }, []); // userDisplayName に依存せず、全ての動画を取得する
 
   if (loading)
     return (
-      <div className="CenteredContainer ">
+      <div className="LoadingContainer">
         <Loading />
       </div>
     );
@@ -77,4 +76,4 @@ const MovieLists = () => {
   );
 };
 
-export default MovieLists;
+export default MyMovieLists;

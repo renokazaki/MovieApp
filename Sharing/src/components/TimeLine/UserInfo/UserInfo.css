@@ -1,0 +1,40 @@
+
+
+.voice-chat-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px #ccc;
+    padding: 10px;
+    background-color: #e8e8e8;
+    width: 100vw;
+  }
+  .UserInfo{
+    display: flex;
+  }
+  
+  .avatar {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    color: black;
+    background-color: #333;
+  }
+  
+  .username {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    font-size: 18px;
+    color: black;
+  }
+  
+  .UserInfoContaier{
+    display: flex;
+    width: 100vw;
+}
+
+
+
+  

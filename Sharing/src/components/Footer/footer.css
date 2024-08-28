@@ -2,7 +2,7 @@
 .Footer {
     position: fixed;
     bottom: 0;
-    width: 100%;
+    width: 100vw;
     height: 80px; /* ヘッダーの高さを設定 */
     background-color: #333;
     color: white;
@@ -15,6 +15,7 @@
     display: flex;
     justify-content: space-between; /* ボタンの間にスペースを設定 */
     align-items: center; /* ボタンを垂直方向に中央揃え */   
+    gap: 70px; /* アイコン間のスペースを設定 */
 
 }
 
@@ -25,10 +26,31 @@
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px;
     margin: 0 15px; /* ボタン間にマージンを追加 */
 }
 
 button:hover {
     background-color: #555;
+}
+
+
+.HouseIcon{
+    color: antiquewhite;
+}
+
+.PlusIcon{
+    color: antiquewhite;
+}
+
+.BellIcon{
+    color: antiquewhite;
+}
+.UserIcon{
+    color: antiquewhite;
+}
+
+.Icon{
+    color: antiquewhite;
+    font-size: 30px; /* アイコンサイズを調整 */
 }

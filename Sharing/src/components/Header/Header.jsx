@@ -1,3 +1,4 @@
+import { LogOut } from "../LogOut/LogOut";
 import { usePageTitle } from "../PageTitleContext";
 
 import "./Header.css";
@@ -8,6 +9,7 @@ const Header = () => {
   return (
     <div className="Header">
       <div className="Title">{pageTitle}</div>
+      <LogOut />
     </div>
   );
 };

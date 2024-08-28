@@ -1,39 +1,63 @@
-import React, { useState } from "react";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { Link } from "react-router-dom";
-import "./Login.css";
+import { Link, useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth, db } from "../../lib/firebase";
+import { collection, addDoc } from "firebase/firestore";
 
-const Login = () => {
-  const auth = getAuth();
+import { useState } from "react";
+
+import "./SignUp.css";
+
+const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [displayName, setDisplayName] = useState(""); // ユーザーの表示名を保存する状態
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSignUp = async (event) => {
+    event.preventDefault(); // フォーム送信時のページリロードを防ぐ
 
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+
+      // displayName を更新
+      await updateProfile(user, { displayName });
+
+      setSuccess("Sign up successful! Redirecting...");
+      setError("");
+      setTimeout(() => {
+        saveUserData(user);
         console.log(user);
-        setSuccess("Logged in successfully!");
-        setError("");
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        setError(`Error: ${errorCode} - ${errorMessage}`);
-        setSuccess("");
-      });
+
+        navigate("/"); // 登録成功後にログインページにリダイレクト
+      }, 2000);
+    } catch (error) {
+      console.error("Error signing up: ", error);
+      setError("Error signing up. Please try again.");
+      setSuccess("");
+    }
+  };
+
+  const saveUserData = async ({ uid, email, displayName }) => {
+    const docRef = await addDoc(collection(db, "User"), {
+      UserId: uid,
+      Email: email,
+      DisplayName: displayName,
+    });
   };
 
   return (
     <>
       <div className="formContainer">
-        <form className="form_main" onSubmit={handleSubmit}>
-          <p className="heading">Login</p>
+        <form className="form_main" onSubmit={handleSignUp}>
+          <p className="heading">SignUp</p>
+
           <div className="inputContainer">
             <svg
               viewBox="0 0 16 16"
@@ -76,14 +100,26 @@ const Login = () => {
             />
           </div>
 
-          <button id="button">Submit</button>
+          <div className="inputContainer">
+            <input
+              placeholder="Username"
+              id="username"
+              className="inputField"
+              type="text"
+              value={displayName}
+              onChange={(e) => setDisplayName(e.target.value)}
+            />
+          </div>
+
+          <button id="button" type="submit">
+            Submit
+          </button>
           {error && <p className="error">{error}</p>}
           {success && <p className="success">{success}</p>}
           <div className="signupContainer">
-            <p>Don't have an account?</p>
-
-            <Link to="/SignUp">
-              <a href="#">Sign up</a>
+            <p>Already have an account?</p>
+            <Link to="/">
+              <a href="#">Login</a>
             </Link>
           </div>
         </form>
@@ -92,4 +128,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

@@ -2,7 +2,7 @@
 .Header {
     position: fixed;
     top: 0;
-    width: 100%;
+    width: 100vw;
     height: 80px; /* ヘッダーの高さを設定 */
     background-color: #333;
     color: white;

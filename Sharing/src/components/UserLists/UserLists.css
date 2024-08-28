@@ -1,35 +1,44 @@
 /* From Uiverse.io by 1osm */ 
-.UserContaier{
+.LoadingContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  margin-top: 100%;
+ }
+ 
+
+
+.UserContainer{
   display: inline-flex;
-  margin-top: 10px;
+  margin-top: 13px;
+  width: -webkit-fill-available
 }
 .Usericon {
-    background-color: #d5b8b8;
-    transform: translateX(10px) translateY(10px);
+    background-color: #000000;
     width: 100px;
     height: 100px;
-    border-radius: 10px;
+    border-radius: 50%;
   }
   .ContentList{
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
-    margin-left: 15px;
-
+    overflow: hidden; /* はみ出しを隠す */
+    background-color: beige;
   }
 .top{
   display: flex;
   justify-content: center;
   align-items: center;
    height: 50px;
-   width: 300px;
-   background-color: aqua; 
-}
+   width: 300px; /* 親要素の幅に合わせる */
+   background-color: #c0c0c0;
+   border-bottom: 2px solid #000000;
+  }
 .bottom{
    height: 50px;
-   width: 300px;
-   background-color: rgb(11, 93, 93); 
-}
+   width: 100%; /* 親要素の幅に合わせる */
+   background-color: #c0c0c0;
+  }
 
 
 
@@ -53,6 +62,9 @@
 .social-media{
   display: flex;
   justify-content: space-around;
+}
+.social-media img{
+  border-radius: 50%;
 }
 
 .social-media :link {
